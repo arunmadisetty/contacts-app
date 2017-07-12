@@ -1,0 +1,8 @@
+<h1>Contact List</h1>
+
+<% @contacts.each do |contact| %>
+<h2><a href="/contacts/<%= contact.id %>"><%= contact.first_name %> <%= contact.last_name %></a></h2>
+<h3>Email: <%= contact.email %></h3>
+<h3>Phone: <%= contact.phone_number %></h3>
+<% end %>
+<a href="/contacts/new" type="button" class="btn btn-default">Add Contact</a>

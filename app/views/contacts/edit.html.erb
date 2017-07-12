@@ -1,0 +1,23 @@
+<h1>Edit contact</h1>
+<%= form_tag "/contacts/#{@contact.id}", method: "patch" do %>
+<div>
+  First name: <input type="text" class="form-control" value="<%= @contact.first_name %>" name="first_name">
+</div> 
+
+<div>
+  Last name: <input type="text" class="form-control" value="<%= @contact.last_name %>" name="last_name">
+</div>
+ 
+<div>
+  Email: <input type="text" class="form-control" value="<%= @contact.email %>" name="email">
+</div> 
+
+<div>
+  Phone: <input type="text" class="form-control" value="<%= @contact.phone_number %>" name="phone_number">
+</div>
+
+<div>
+  <input type="submit" class="btn btn-default" value="Edit contact">
+</div>
+
+<% end %>
