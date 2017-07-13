@@ -1,8 +1,11 @@
 <h1>Contact List</h1>
-
-<% @contacts.each do |contact| %>
-<h2><a href="/contacts/<%= contact.id %>"><%= contact.first_name %> <%= contact.last_name %></a></h2>
-<h3>Email: <%= contact.email %></h3>
-<h3>Phone: <%= contact.phone_number %></h3>
-<% end %>
+<div class="row">
+  <% @contacts.each do |contact| %>
+    <div>
+      <h2><a href="/contacts/<%= contact.id %>"><%= contact.full_name %></a></h2>
+      <h5>Created: <%= contact.friendly_created_at %></h5>
+      <h3>Email: <%= contact.email %></h3>  
+      <h3>Phone: <%= contact.japanese_prefix %></h3>
+  <% end %>
+</div>
 <a href="/contacts/new" type="button" class="btn btn-default">Add Contact</a>

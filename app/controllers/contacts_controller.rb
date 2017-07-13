@@ -18,6 +18,7 @@ class ContactsController < ApplicationController
       )
     newcontact.save
     #render "create.html.erb"
+    flash[:success]="New contact added."
     redirect_to "/contacts"
   end
 
@@ -42,6 +43,7 @@ class ContactsController < ApplicationController
     @contact.phone_number = params[:phone_number]
     @contact.save
     #render "update.html.erb"
+    flash[:success]="Contact successfully updated."
     redirect_to "/contacts/#{@contact.id}"
   end
 
@@ -50,6 +52,7 @@ class ContactsController < ApplicationController
     @contact = Contact.find_by(id: contact_id)
     @contact.destroy
     #render "destroy.html.erb"
+    flash[:danger]="Contact deleted."
     redirect_to "/contacts"
   end
 end
