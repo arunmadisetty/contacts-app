@@ -1,6 +1,9 @@
-<h2><%= @contact.first_name %> <%= @contact.last_name %></h2>
+<h2>
+<%= @contact.first_name %> <%= @contact.middle_name %> <%= @contact.last_name %>
+</h2>
 <h3>Email: <%= @contact.email %></h3>
 <h3>Phone: <%= @contact.phone_number %></h3>
+<h4>Bio: <%= @contact.bio %></h4>
 <h5>Created: <%= @contact.friendly_created_at %></h5>
 <a href="/contacts/<%= @contact.id %>/edit" type="button" class="btn btn-primary btn-md">Update Contact</a>
 <%= form_tag "/contacts/#{@contact.id}", method: "delete" do %>
