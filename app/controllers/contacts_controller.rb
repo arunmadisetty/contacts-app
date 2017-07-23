@@ -1,8 +1,18 @@
 class ContactsController < ApplicationController
   
   def index
-    @contacts = Contact.all
-    render "index.html.erb"
+    if current_user
+      search = params[:search_term]
+      if search
+        @contacts = current_user.contacts.where("first_name ILIKE ? OR last_name ILIKE ?", "%" + search + "%")
+      else 
+        @contacts = current_user.contacts.all
+      end
+      render "index.html.erb"
+
+    else
+      redirect_to "/login"
+    end
   end
 
   def new

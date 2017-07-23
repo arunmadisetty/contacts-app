@@ -1,10 +1,6 @@
 class Contact < ApplicationRecord
+  belongs_to :user
   def full_name
-    # if middle_name
-    #   first_name + " " + middle_name + " " + last_name
-    # else
-    #   first_name + " " + last_name
-    # end
     "#{first_name} #{middle_name} #{last_name}"
   end
 
