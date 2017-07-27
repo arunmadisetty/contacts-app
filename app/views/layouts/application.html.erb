@@ -61,7 +61,9 @@
               <li><a href="/login">Log in</a></li>
             <% end %>  
             <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
+            <% Group.all.each do |group| %>
+              <li><a href="/contacts?group=<%= group.name %>">Show group: <%= group.name %></a></li>
+            <% end %>
           </ul>
         </li>
       </ul>

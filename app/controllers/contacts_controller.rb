@@ -8,6 +8,13 @@ class ContactsController < ApplicationController
       else 
         @contacts = current_user.contacts.all
       end
+
+      group_name = params[:group]
+      if group_name
+        group = Group.find_by(name: group_name)
+        @contacts = group.contacts
+      end
+
       render "index.html.erb"
 
     else
@@ -20,15 +27,15 @@ class ContactsController < ApplicationController
   end
 
   def create
-    newcontact = Contact.new(
+    newcontact = Contact.create(
       first_name: params[:first_name],
       middle_name: params[:middle_name],
       last_name: params[:last_name],
       email: params[:email],
       phone_number: params[:phone_number],
-      bio: params[:bio]
+      bio: params[:bio],
+      user_id: current_user.id
       )
-    newcontact.save
     #render "create.html.erb"
     flash[:success]="New contact added."
     redirect_to "/contacts"
