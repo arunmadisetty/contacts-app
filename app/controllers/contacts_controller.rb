@@ -11,23 +11,26 @@ class ContactsController < ApplicationController
 
       group_name = params[:group]
       if group_name
-        group = Group.find_by(name: group_name)
-        @contacts = group.contacts
+        group = Group.find_by(name: params[:group_name]).contacts.where(user_id: current_user.id)
+
+        @contacts = current_user.contacts
       end
 
       render "index.html.erb"
 
     else
+      flash[:warning] = "You must log in to see your contacts."
       redirect_to "/login"
     end
   end
 
   def new
+    @newcontact = Contact.new
     render "new.html.erb"
   end
 
   def create
-    newcontact = Contact.create(
+    @newcontact = Contact.new(
       first_name: params[:first_name],
       middle_name: params[:middle_name],
       last_name: params[:last_name],
@@ -37,8 +40,13 @@ class ContactsController < ApplicationController
       user_id: current_user.id
       )
     #render "create.html.erb"
-    flash[:success]="New contact added."
-    redirect_to "/contacts"
+    if @newcontact.save
+      flash[:success]="New contact added"
+      redirect_to "/contacts"
+    else
+
+      render "new.html.erb"
+    end
   end
 
   def show

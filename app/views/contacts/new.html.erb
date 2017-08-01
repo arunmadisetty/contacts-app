@@ -1,21 +1,21 @@
 <h1>Add a new contact</h1>
 <%= form_tag "/contacts", method: "post" do %>
 <div>
-  First name: <input type="text" class="form-control" name="first_name">
+  First name: <input type="text" class="form-control" name="first_name" value="<%= @newcontact.first_name %>">
 </div> 
 <div>
-  Middle name: <input type="text" class="form-control" name="middle_name">
+  Middle name: <input type="text" class="form-control" name="middle_name" value="<%= @newcontact.middle_name %>">
 </div>
 <div>
-  Last name: <input type="text" class="form-control" name="last_name">
+  Last name: <input type="text" class="form-control" name="last_name" value="<%= @newcontact.last_name %>">
 </div>
  
 <div>
-  Email: <input type="text" class="form-control" name="email">
+  Email: <input type="text" class="form-control" name="email" value="<%= @newcontact.email %>">
 </div> 
 
 <div>
-  Phone: <input type="text" class="form-control" name="phone_number">
+  Phone: <input type="text" class="form-control" name="phone_number" value="<%= @newcontact.phone_number %>">
 </div>
 
 
